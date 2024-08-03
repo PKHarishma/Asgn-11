@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="2xl:container mx-auto">
+       <div class="w-[90%] mx-auto h-screen grid grid-cols-1 bg-gradient-to-r from-[#900DAF] to-pink-400">
+        <div class="flex flex-col justify-center items-center ">
+            <div >
+                <h1 class="text-[35px] mb-14 ">Update Password</h1>
+            <form id="form" class="p-4">
+                <label for="np">NEW PASSWORD</label><br>
+                <input type="password" placeholder="Create new password" id="np" class="m-0 mt-3 h-10 w-72 rounded-lg pl-3">
+                <p id="nerror" class="m-0 text-[16px] p-0 text-[#781d1d]"></p><br><br>
+                <label for="cp">Confirm password</label><br>
+                <input type="password" placeholder="CONFIRM PASSWORD" id="cp" class="m-0 mt-3  h-10 w-72 rounded-lg pl-3 "><br>
+                <p id="uerror"  class="m-0 text-[16px] text-[#781d1d]"></p><br><br>
+                <div class="flex justify-center" >
+                    <button type="Submit" class="pl-5 pr-5 p-2 rounded-lg bg-pink-600">Update</button>
+                </div>
+            </form>
+            </div>
+        </div>
+
+       </div>
+    </div>
+    <script>
+        const form=document.getElementById("form");
+        const n=document.getElementById("np");
+        const u=document.getElementById("cp");
+        const nerror=document.getElementById("nerror");
+        const uerror=document.getElementById("uerror");
+        const valid=(nv,uv)=>
+    {
+       if(!nv.match(uv))
+       {uerror.textContent="Password must be same";
+       uerror.style.color="red";}
+      else
+      uerror.textContent=""
+    }
+    n.addEventListener("focusout",(e)=>
+{ 
+    if(e.target.value==="")
+{
+    nerror.textContent="*Required";
+    nerror.style.color="red";
+
+}
+else
+ nerror.textContent="";
+    
+    
+})
+
+u.addEventListener("blur",()=>
+{
+
+})
+        form.addEventListener("submit",(e)=>
+    {
+        e.preventDefault();
+        const nv=n.value ;
+        const uv=u.value;
+        valid(nv,uv);
+        
+    })
+    </script>
+</body>
+</html>
